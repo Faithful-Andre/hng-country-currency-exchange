@@ -1,8 +1,8 @@
 HNG Country Cache API Explorer
 This repository contains the client-side exploration and documentation for the HNG Country Cache API, which serves a summary and detailed data for 250 countries. The API is running locally on port 3000.
- 
+
 Deployment
-This project can be deployed to platforms like Railway or any Node.js hosting service.Railway Deployment NotesEnsure your application's start command is correctly configured in Railway to launch the server on the correct port (usually determined by the environment variable PORT).The API utilizes a cache summary, so it's inherently read-only for external users (as confirmed by the failed POST requests during testing).🛠️ Local Setup and UsagePrerequisitesTo run and interact with the API locally, you need:Node.js (to run the server application)PowerShell (or a similar tool like curl or Postman) for making API requests.InstallationClone the Repository:Bashgit clone [YOUR_REPOSITORY_URL]
+This project can be deployed to platforms like Railway or any Node.js hosting service.Railway Deployment NotesEnsure your application's start command is correctly configured in Railway to launch the server on the correct port (usually determined by the environment variable PORT).The API utilizes a cache summary, so it's inherently read-only for external users (as confirmed by the failed POST requests during testing).🛠️ Local Setup and UsagePrerequisitesTo run and interact with the API locally, you need:Node.js (to run the server application)PowerShell (or a similar tool like curl or Postman) for making API requests.InstallationClone the Repository:Bashgit clone [(https://github.com/Faithful-Andre/hng-country-currency-exchange)]
 cd hng-country-cache-explorer
 Install Dependencies: (If applicable to the server code)Bashnpm install
 Start the Server:Bashnpm start
