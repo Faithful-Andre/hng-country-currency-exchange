@@ -1,0 +1,14 @@
+HNG Country Cache API Explorer
+This repository contains the client-side exploration and documentation for the HNG Country Cache API, which serves a summary and detailed data for 250 countries. The API is running locally on port 3000.
+ 
+Deployment
+This project can be deployed to platforms like Railway or any Node.js hosting service.Railway Deployment NotesEnsure your application's start command is correctly configured in Railway to launch the server on the correct port (usually determined by the environment variable PORT).The API utilizes a cache summary, so it's inherently read-only for external users (as confirmed by the failed POST requests during testing).🛠️ Local Setup and UsagePrerequisitesTo run and interact with the API locally, you need:Node.js (to run the server application)PowerShell (or a similar tool like curl or Postman) for making API requests.InstallationClone the Repository:Bashgit clone [YOUR_REPOSITORY_URL]
+cd hng-country-cache-explorer
+Install Dependencies: (If applicable to the server code)Bashnpm install
+Start the Server:Bashnpm start
+# The server should start on http://localhost:3000
+API Endpoints (GET Requests)The following endpoints were discovered and successfully tested using Invoke-RestMethod in PowerShell.1. Country Cache Summary ImageRetrieves a PNG image containing a summary of the cached data (Total countries, Last Refreshed, Top 5 GDP).MethodEndpointDescriptionGET/countries/imageReturns a PNG image.PowerShell Command to Save Image:PowerShellInvoke-WebRequest -Uri http://localhost:3000/countries/image -OutFile "country_summary.png"
+2. Retrieve Full Country DatasetRetrieves the complete array of 250 country objects in JSON format.MethodEndpointDescriptionGET/countriesReturns a JSON array of all cached countries.PowerShell Command:PowerShellInvoke-RestMethod -Uri http://localhost:3000/countries
+3. Filtered and Sorted DataAllows filtering and sorting the dataset using URL query parameters.MethodEndpointParametersDescriptionGET/countries?sort=gdp&limit=5Returns the Top 5 countries sorted by estimated GDP.PowerShell Command:PowerShellInvoke-RestMethod -Uri 'http://localhost:3000/countries?sort=gdp&limit=5'
+4. Single Country Lookup (by Full Name)Retrieves detailed data for a single country. The API uses the full, URL-encoded name for lookup, not short codes (e.g., 'USA' fails).MethodEndpointExample PathGET/countries/:name/countries/United%20States%20of%20AmericaPowerShell Command:PowerShellInvoke-RestMethod -Uri 'http://localhost:3000/countries/United%20States%20of%20America'
+Known Limitations (Read-Only API)Testing confirmed that the API is intended for read-only data access:POST requests to create new resources (e.g., POST /countries) fail with a "Resource not found" error, indicating that write operations are not implemented.
